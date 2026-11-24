@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static', filename='bookStyle.css')}}">
+    </head>
+    <body style="background-color: antiquewhite;">
+    <header><h1>Available Books</h1></header>
+
+    <nav id="navigation">
+    <a href="/">Home</a>
+    </nav>
+    <br><br>
+
+    <div class="search-container">
+        <h2>Find book</h2>
+
+     <form method="get" action="/books">
+        <input type="text" name="search" placeholder="Search for book">
+        <button type="submit">Search</button>
+     </form>
+     {%if books |length == 0%}
+     <h2>This book is unavailable</h2>
+     {% else %}
+ <table>
+    <tr>
+        <th>Book ID</th>
+        <th>Book title</th>
+        <th>Author</th>
+        <th>Availability</th>
+        <th>Action</th>
+    </tr>
+
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.availability }}</td>
+        {% if book.availability == "unavailable" %}
+        <td>Unavailable</td>
+        {% else %}
+        <td><button href="reserve">Reserve</button></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+     {% endif %}
+     </div>
+
+    </body>
+</html>
