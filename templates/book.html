@@ -10,6 +10,7 @@
 
     <nav id="navigation">
     <a href="/">Home</a>
+    <a href="/reservebook">Reserve book</a>
     </nav>
     <br><br>
 
@@ -34,15 +35,18 @@
 
     {% for book in books %}
     <tr>
-        <td>{{ book.id }}</td>
-        <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
-        <td>{{ book.availability }}</td>
-        {% if book.availability == False %}
+    <td>{{ book.id }}</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+
+    {% if book.availability %}
+        <td>Available</td>
+        <td><a href="/reserve/{{ book.id }}">Reserve</a></td>
+    {% else %}
         <td>Unavailable</td>
-        {% else %}
-        <td><button href="reserve">Reserve</button></td>
-        {% endif %}
+        <td>Unavailable</td>
+    {% endif %}
+</tr>
     </tr>
     {% endfor %}
   </table>

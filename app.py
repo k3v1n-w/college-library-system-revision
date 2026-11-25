@@ -8,16 +8,16 @@ def home():
 
 @app.route("/books")
 def books():
-
+    #List of books in a dictionary
     book_list=[
         {"id":1,"title":"An Inspector Calls","author":"Priestley","availability":True},
         {"id":2,"title":"Macbeth","author":"Shakespeare","availability":True},
         {"id":3,"title":"Othello","author":"Shakespeare","availability":False},
         {"id":4,"title":"A Christmas Carol","author":"Priestley","availability":False}
         ]
-
+    #Get in put from url
     search = request.args.get("search","")
-
+    #Filtering the search
     if search:
         book_list = [
             book for book in book_list
@@ -25,6 +25,11 @@ def books():
         ]
 
     return render_template("book.html", books=book_list)
+
+@app.route("/reserve/<int:book_id>")
+def reserve(book_id):
+
+    render_template("reserve.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
