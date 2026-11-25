@@ -10,10 +10,10 @@ def home():
 def books():
 
     book_list=[
-        {"id":1,"title":"An Inspector Calls","author":"Priestley","availability":"Available"},
-        {"id":2,"title":"Macbeth","author":"Shakespeare","availability":"Available"},
-        {"id":3,"title":"Othello","author":"Shakespeare","availability":"Unavailable"},
-        {"id":4,"title":"A Christmas Carol","author":"Priestley","availability":"Unavailable"}
+        {"id":1,"title":"An Inspector Calls","author":"Priestley","availability":True},
+        {"id":2,"title":"Macbeth","author":"Shakespeare","availability":True},
+        {"id":3,"title":"Othello","author":"Shakespeare","availability":False},
+        {"id":4,"title":"A Christmas Carol","author":"Priestley","availability":False}
         ]
 
     search = request.args.get("search","")

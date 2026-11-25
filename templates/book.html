@@ -38,7 +38,7 @@
         <td>{{ book.title }}</td>
         <td>{{ book.author }}</td>
         <td>{{ book.availability }}</td>
-        {% if book.availability == "unavailable" %}
+        {% if book.availability == False %}
         <td>Unavailable</td>
         {% else %}
         <td><button href="reserve">Reserve</button></td>
